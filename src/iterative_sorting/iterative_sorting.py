@@ -20,11 +20,22 @@ def selection_sort( arr ):
 
 # TO-DO:  implement the Bubble Sort function below
 def bubble_sort( arr ):
+    # Loop through all indicies in array
+    for i in range(1, len(arr)):
+        # Create variables for indicies being compared
+        a = arr[i-1]
+        b = arr[i]
+        # If left index is greater than right index, swap places
+        if a > b:
+            a = arr[i]
+            b = arr[i-1]
+        else:
+            pass
 
     return arr
 
 
 # STRETCH: implement the Count Sort function below
-def count_sort( arr, maximum=-1 ):
+# def count_sort( arr, maximum=-1 ):
 
-    return arr
+    # return arr
