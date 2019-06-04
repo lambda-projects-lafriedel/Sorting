@@ -6,7 +6,7 @@ def merge( arrA, arrB ):
     # Loop through arrA's indices, compare them to the indices of arrB.
     # If i of arrA is smaller than i of arrB, set arrA[i] to the next index of merged_arr. Else, set arrB[i] as the next index
     i = 0
-    while :
+    for i in range(len(arrA)):
         print(i, arrA, arrB)
         if arrA[i] < arrB[i]:
             merged_arr[i] = arrA[i]
@@ -25,12 +25,18 @@ merge([2,4], [1,5])
 # TO-DO: implement the Merge Sort function below USING RECURSION
 def merge_sort( arr ):
     # TO-DO
-    # Edge case: If arr is 0 or 1 in length, return arr.
+    # If arr is 0 or 1 in length, return arr.
     if len(arr) <= 1:
         return arr
+
     # Split arr into two equal arrays
-    # 
-    return arr
+    split_index = len(arr) // 2
+
+    left = arr[split_index-1:]
+    right = arr[:split_index+1]
+
+    # Recurse through the new arrays
+    return merge_sort(left, right)
 
 
 # STRETCH: implement an in-place merge sort algorithm
