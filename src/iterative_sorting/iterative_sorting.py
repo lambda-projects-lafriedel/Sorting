@@ -1,34 +1,17 @@
 # TO-DO: Complete the selection_sort() function below 
 def selection_sort(arr):
-    # loop through n-1 elements
     for i in range(0, len(arr) - 1):
-        # Store the current index. But why?
+
         cur_index = i
-        print("cur_index:", cur_index, "\n")
-
-        # Assign the smallest index as the current index
         smallest_index = cur_index
-        print("smallest_index before for:", smallest_index, "\n")
 
-        # TO-DO: find next smallest element
-        # (hint, can do in 3 loc) 
-        # Loop through all indices in list after index 0 and compare them to the smallest_index
-        for j in range(1, len(arr)):
-            print("arr[j]:", arr[j], "\n")
-            
-            # If arr[1] < arr[0] (if 10 < 29 [TRUE], update smallest_index with the index that equals j. After looping through all the indices, swap arr[smallest_index] with )
+        for j in range(cur_index+1, len(arr)):
             if arr[j] < arr[smallest_index]:
                 smallest_index = j
-            arr[cur_index] = arr[smallest_index]
-            arr[j] = arr[i]
-        print(arr, "\n")
-
+                
+        arr[i], arr[smallest_index] = arr[smallest_index], arr[i]
+        
     return arr
-
-selection_sort([29,10,14,37,13])
-
-
-
 
 # TO-DO:  implement the Bubble Sort function below
 def bubble_sort(arr):
