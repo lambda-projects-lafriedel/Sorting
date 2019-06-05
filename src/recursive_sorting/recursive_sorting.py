@@ -26,9 +26,6 @@ def merge( arrA, arrB ):
     # print(merged_arr)
     return merged_arr
 
-merge([2,4], [1,5])
-
-
 # TO-DO: implement the Merge Sort function below USING RECURSION
 def merge_sort( arr ):
     # TO-DO
@@ -38,9 +35,11 @@ def merge_sort( arr ):
 
     # Split arr into two equal arrays
     split_index = len(arr) // 2
+    # split_index == 3 when len == 6
 
-    left = arr[split_index-1:]
-    right = arr[:split_index+1]
+    left = arr[:split_index-1]
+    right = arr[split_index:]
+
     # Recurse through the new arrays
     merge_sort(merge(left, right))
 
