@@ -8,19 +8,23 @@ def merge( arrA, arrB ):
     arrA_index = 0
     arrB_index = 0
 
-    # Loop through merged_arr's indices and compare the values of .
+    # Loop through merged_arr's indices and compare the values of arrA and arrB.
     for i in range(0, elements):
-
+        # If the stored index equals the length of the arr (meaning all values have been added to the sorted list), set merged_arr[i] as the last value in the opposite arr.
+        if arrA_index == len(arrA):
+            merged_arr[i] = arrB[arrB_index]
+        elif arrB_index == len(arrB):
+            merged_arr[i] = arrA[arrA_index]
         # If index of arrA is smaller than index of arrB, set that arrA's index to merged_arr[i]. Else, set arrB's index to merged_arr[i]
-        if arrA[arrA_index] < arrB[arrB_index]:
+        elif arrA[arrA_index] < arrB[arrB_index]:
             merged_arr[i] = arrA[arrA_index]
             arrA_index += 1
         else:
             merged_arr[i] = arrB[arrB_index]
             arrB_index += 1
         
-    print(merged_arr)
-    #return merged_arr
+    # print(merged_arr)
+    return merged_arr
 
 merge([2,4], [1,5])
 
