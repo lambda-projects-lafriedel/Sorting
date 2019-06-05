@@ -37,11 +37,14 @@ def merge_sort( arr ):
     split_index = len(arr) // 2
     # split_index == 3 when len == 6
 
-    left = arr[:split_index-1]
+    left = arr[:split_index]
     right = arr[split_index:]
 
     # Recurse through the new arrays
-    merge_sort(merge(left, right))
+    merge_sort(left)
+    merge_sort(right)
+
+    return arr
 
     
 
