@@ -3,19 +3,22 @@ def merge( arrA, arrB ):
     # These 2 lines are creating a new list that has the length of 'elements' and is being instantiated with 0s as placeholders
     elements = len( arrA ) + len( arrB )
     merged_arr = [0] * elements
-    # Loop through arrA's indices, compare them to the indices of arrB.
-    # If i of arrA is smaller than i of arrB, set arrA[i] to the next index of merged_arr. Else, set arrB[i] as the next index
-    i = 0
-    for i in range(len(arrA)):
-        print(i, arrA, arrB)
-        if arrA[i] < arrB[i]:
-            merged_arr[i] = arrA[i]
-            arrA.remove(arrA[i])
+
+    # Need to keep track of indices! This is what I was missing.
+    arrA_index = 0
+    arrB_index = 0
+
+    # Loop through merged_arr's indices and compare the values of .
+    for i in range(0, elements):
+
+        # If index of arrA is smaller than index of arrB, set that arrA's index to merged_arr[i]. Else, set arrB's index to merged_arr[i]
+        if arrA[arrA_index] < arrB[arrB_index]:
+            merged_arr[i] = arrA[arrA_index]
+            arrA_index += 1
         else:
-            merged_arr[i] = arrB[i]
-            merged_arr[i+1] = arrA[i]
-            arrB.remove(arrB[i])
-        i += 1
+            merged_arr[i] = arrB[arrB_index]
+            arrB_index += 1
+        
     print(merged_arr)
     #return merged_arr
 
@@ -34,9 +37,11 @@ def merge_sort( arr ):
 
     left = arr[split_index-1:]
     right = arr[:split_index+1]
-
     # Recurse through the new arrays
-    return merge_sort(left, right)
+    merge_sort(merge(left, right))
+
+    
+
 
 
 # STRETCH: implement an in-place merge sort algorithm
