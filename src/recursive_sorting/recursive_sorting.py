@@ -13,8 +13,10 @@ def merge( arrA, arrB ):
         # If the stored index equals the length of the arr (meaning all values have been added to the sorted list), set merged_arr[i] as the last value in the opposite arr.
         if arrA_index == len(arrA):
             merged_arr[i] = arrB[arrB_index]
+            arrB_index += 1
         elif arrB_index == len(arrB):
             merged_arr[i] = arrA[arrA_index]
+            arrA_index += 1
         # If index of arrA is smaller than index of arrB, set that arrA's index to merged_arr[i]. Else, set arrB's index to merged_arr[i]
         elif arrA[arrA_index] < arrB[arrB_index]:
             merged_arr[i] = arrA[arrA_index]
@@ -35,16 +37,15 @@ def merge_sort( arr ):
 
     # Split arr into two equal arrays
     split_index = len(arr) // 2
-    # split_index == 3 when len == 6
-
-    left = arr[:split_index]
-    right = arr[split_index:]
 
     # Recurse through the new arrays
-    merge_sort(left)
-    merge_sort(right)
+    left = merge_sort(arr[:split_index])
+    right = merge_sort(arr[split_index:])
 
-    return arr
+    # Merge the two sides
+    merged_arr = merge(left, right)
+
+    return merged_arr
 
     
 
